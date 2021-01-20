@@ -8,30 +8,30 @@ public class CalculatorTest extends BaseTest {
 
     @Test(dataProvider = "Incoming data for Amount", dataProviderClass = TestDataProviders.class, invocationCount = 3, threadPoolSize = 3)
     public void amountTest(double number1, double number2) {
-        double amount = calculator.amount(number1, number2);
+        double actualAmount = calculator.amount(number1, number2);
         double expectedAmount = number1 + number2;
-        Assert.assertTrue(amount == expectedAmount);
+        Assert.assertEquals(actualAmount, expectedAmount);
     }
 
     @Parameters({"number1", "number2"})
     @Test(retryAnalyzer = Retry.class)
     public void differenceTest(double number1, double number2) {
-        double difference = calculator.difference(number1, number2);
+        double actualDifference = calculator.difference(number1, number2);
         double expectedDifference = number1 - number2;
-        Assert.assertTrue(difference == expectedDifference);
+        Assert.assertEquals(actualDifference, expectedDifference);
     }
 
     @Test(dataProvider = "Incoming data for multiplication", dataProviderClass = TestDataProviders.class)
     public void multiplicationTest(double number1, double number2) {
-        double multiplication = calculator.multiplication(number1, number2);
+        double actualMultiplication = calculator.multiplication(number1, number2);
         double expectedMultiplication = number1 * number2;
-        Assert.assertTrue(multiplication == expectedMultiplication);
+        Assert.assertEquals(actualMultiplication, expectedMultiplication);
     }
 
     @Test(dataProvider = "Incoming data for division", dataProviderClass = TestDataProviders.class)
     public void divisionTest(double number1, double number2) {
-        double division = calculator.division(number1, number2);
+        double actualDivision = calculator.division(number1, number2);
         double expectedDivision = number1 / number2;
-        Assert.assertTrue(division == expectedDivision);
+        Assert.assertEquals(actualDivision, expectedDivision);
     }
 }
